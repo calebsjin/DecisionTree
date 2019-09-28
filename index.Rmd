@@ -14,4 +14,4 @@ description: "This is the Decision Tree methods, including both regression tree 
 
 # Foreword {-#Foreword}
 
-I am [Caleb Jin](https://www.sjin.name/). This is my note of **decision tree**. When I try to grasp a statistical method, I'd like to wirte down every details about it that I am able to. I mainly use **An Introduction to Statistical Learning with Applications in R** [@James2014] and **The Elements of Statistical Learning** [@hastie2008]. Due to my limited statistics knowledge, if making any mistakes, I sincerely expect you guys can email to me. My email address is jinsq@ksu.edu. Appreicate!
+I am [Caleb Jin](https://www.sjin.name/). This is my note of **decision tree**. When I try to grasp a statistical method, I'd like to wirte down every details about it that I am able to. I mainly use **[An Introduction to Statistical Learning with Applications in R (ISLR)](http://faculty.marshall.usc.edu/gareth-james/ISL/)** [@James2014] and **The Elements of Statistical Learning** [@hastie2008]. Due to my limited statistics knowledge, if making any mistakes, I sincerely expect you guys can email to me. My email address is jinsq@ksu.edu. Appreicate!

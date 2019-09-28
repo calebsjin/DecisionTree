@@ -30,6 +30,46 @@
 \urlstyle{same}  % don't use monospace font for urls
 \usepackage{natbib}
 \bibliographystyle{apalike}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs}
 \usepackage{graphicx,grffile}
 \makeatletter
@@ -106,18 +146,19 @@
 \chapter*{Foreword}\label{Foreword}}
 \addcontentsline{toc}{chapter}{Foreword}
 
-I am \href{https://www.sjin.name/}{Caleb Jin}. This is my note of \textbf{decision tree}. When I try to grasp a statistical method, I'd like to wirte down every details about it that I am able to. I mainly use \textbf{An Introduction to Statistical Learning with Applications in R} \citep{James2014} and \textbf{The Elements of Statistical Learning} \citep{hastie2008}. Due to my limited statistics knowledge, if making any mistakes, I sincerely expect you guys can email to me. My email address is \href{mailto:jinsq@ksu.edu}{\nolinkurl{jinsq@ksu.edu}}. Appreicate!
+I am \href{https://www.sjin.name/}{Caleb Jin}. This is my note of \textbf{decision tree}. When I try to grasp a statistical method, I'd like to wirte down every details about it that I am able to. I mainly use \textbf{\href{http://faculty.marshall.usc.edu/gareth-james/ISL/}{An Introduction to Statistical Learning with Applications in R (ISLR)}} \citep{James2014} and \textbf{The Elements of Statistical Learning} \citep{hastie2008}. Due to my limited statistics knowledge, if making any mistakes, I sincerely expect you guys can email to me. My email address is \href{mailto:jinsq@ksu.edu}{\nolinkurl{jinsq@ksu.edu}}. Appreicate!
 
 \newcommand\uy{{\bf y}}
 \newcommand\uX{{\bf X}}
 \newcommand\ux{{\bf x}}
+\newcommand\T{{\top}}
 
 \hypertarget{basic}{%
-\chapter{The Basic of Decision Tree}\label{basic}}
+\chapter{Regression Trees}\label{basic}}
 
-Let's start with a simple model setting. Consider we have a continuous response variable \({\bf y}=(y_1,y_2, \ldots, y_n)\) and 2 predictors \({\bf X}= ({\bf x}_1,{\bf x}_2)\in \mathbb{R}^{n\times 2}\).
+Let's start with a simple model setting. Consider we have a continuous response variable \({\bf y}=(y_1,y_2, \ldots, y_n)\) and one predictor \({\bf x}= (x_1, x_2, \ldots, x_n)^{{\top}}\).
 
-The decision tree starts with splitting a predictor, say \({\bf x}_1\),
+The decision tree starts with splitting the predictor \({\bf x}\),
 
 \begin{itemize}
 \item
@@ -125,7 +166,7 @@ The decision tree starts with splitting a predictor, say \({\bf x}_1\),
   \def\labelenumi{\arabic{enumi})}
   \tightlist
   \item
-    We partition \({\bf x}_1\) into two distinct regions \(R_1(1,s) = \{{\bf x}_1|{\bf x}_1<s\}\) and \(R_2(1,s) = \{{\bf x}_1|{\bf x}_1\geq s\}\).
+    We partition \({\bf x}\) into two distinct regions \(R_1(s) = \{{\bf x}|{\bf x}<s\}\) and \(R_2(s) = \{{\bf x}|{\bf x}\geq s\}\).
   \end{enumerate}
 \item
   \begin{enumerate}
@@ -133,18 +174,264 @@ The decision tree starts with splitting a predictor, say \({\bf x}_1\),
   \setcounter{enumi}{1}
   \tightlist
   \item
-    As all observations are divided into two regions \(R_1(1,s)\) or \(R_2(1,s)\), then we make the same prediction with \[
-    \hat y_{R_1}=\frac{1}{n_1}\sum_{i:x_{i1}\in R_1} y_i,\]
-    \[\hat y_{R_2}=\frac{1}{n_2}\sum_{i: x_{i1}\in R_2} y_i.\]
+    Since all observations are divided into two regions \(R_1(s)\) or \(R_2(s)\), we make the same prediction for each region with \[
+    \hat y_{R_1}=\frac{1}{n_1}\sum_{i:x_i\in R_1} y_i,\]
+    \[\hat y_{R_2}=\frac{1}{n_2}\sum_{i: x_i\in R_2} y_i,\]
+    where \(n_1\) and \(n_2\) are number of observations in \(R_1\) and \(R_2\), respectively.
   \end{enumerate}
 \end{itemize}
 
-\textbf{The question is how to determine \(s\)}.
+\textbf{The question is how to determine the value of cutpoint \(s\) to partition \({\bf x}\) into \(R_1\) and \(R_2\)}.
 
-From the step 1), we get \(R_1(1,s)\) and \(R_2(1,s)\) by spliting \({\bf x}_1\), for example. We hope this splitting can maximize sum of squares between regions and minimize sum of squares within regions of \({\bf y}\). As total sum of squares of \({\bf y}\) is fixed, maximium of sum of squares between regions is equivalent to minimum of sum of squares within regions. This lead us to consider a classic criterion, residual sum of squares (RSS):
+From the step 1), We hope this splitting can minimize sum of squares within regions of \({\bf y}\). This leads us to consider a classic criterion, residual sum of squares (RSS):
 \[
-RSS = \sum_{j=1}^{2}\sum_{i:x_{i1}\in R_j(1,s)}(y_i - \hat y_{R_j})^2.
+RSS = \sum_{j=1}^{2}\sum_{i:x_i\in R_j(s)}(y_i - \hat y_{R_j})^2.
 \]
+
+Therefore, in the general model setting (consider \(p\) many predictors \({\bf x}_j\) for \(j=1,2,\ldots,p\)), the question is then transferred to:
+
+\begin{itemize}
+\item
+  For each predictor \({\bf x}_j\), find the best \(s\) value that can minimize RSS.
+\item
+  Among \(p\) many different RSS, choose the predictor and cutpoint \(s\) that resulting splitting has smallest RSS.
+\end{itemize}
+
+To better understand the details above, we define the pair of half-planes as
+\[
+R_1(j,s) = \{x|{\bf x}_j<s\}\quad \text{and} \quad R_2(j,s) = \{x|{\bf x}_j\geq s\}, 
+\]
+for any \(j\) and \(s\). And we search \(x_j\) and \(s\) that minimize the equation
+\[
+\sum_{i:x_{ij}\in R_1(j,s)}(y_i - \hat y_{R_1})^2 + \sum_{i:x_{ij}\in R_2(j,s)}(y_i - \hat y_{R_2})^2.
+\]
+After this process, we split the space of a specific predictor and data into two regions or branches. Within each branch identified previously, repeat this process, seeking the pair \((j,s)\) to minimize RSS. However, we only choose one branch to split into two sub-branches that has minimum RSS compared with RSS of another branch splitting and RSS of mother splitting. Hence, at this stage, we may have three branches or two branches, because possibly no smaller RSS can be found and no further splitting occurs. This process continues until a stopping criterion is reached and obtain \(R_1, R_2, \ldots, R_J\).
+
+\hypertarget{tree-pruning}{%
+\section{Tree Pruning}\label{tree-pruning}}
+
+\hypertarget{fitting-regression-trees}{%
+\section{Fitting Regression Trees}\label{fitting-regression-trees}}
+
+I use R code from the book ISLR \citep{James2014} to illustrate the regression trees. \texttt{Boston} data set is used in the R package \texttt{MASS}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Load packages}
+\KeywordTok{library}\NormalTok{(tree)}
+\KeywordTok{library}\NormalTok{(ISLR)}
+\KeywordTok{library}\NormalTok{(MASS)}
+\KeywordTok{library}\NormalTok{(knitr)}
+\KeywordTok{library}\NormalTok{(corrplot)}
+\end{Highlighting}
+\end{Shaded}
+
+The Boston data frame has 506 rows and 14 columns. This data frame contains the following variables:
+
+\begin{tabular}{l|l}
+\hline
+Var & Desp\\
+\hline
+crim & per capita crime rate by town\\
+\hline
+zn & proportion of residential land zoned for lots over 25,000 sq.ft\\
+\hline
+indus & proportion of non-retail business acres per town\\
+\hline
+chas & Charles River dummy variable (= 1 if tract bounds river; 0 otherwise)\\
+\hline
+nox & nitrogen oxides concentration (parts per 10 million)\\
+\hline
+rm & average number of rooms per dwelling\\
+\hline
+age & proportion of owner-occupied units built prior to 1940\\
+\hline
+dis & weighted mean of distances to five Boston employment centres\\
+\hline
+rad & index of accessibility to radial highways\\
+\hline
+tax & full-value property-tax rate per \$10,000\\
+\hline
+ptratio & pupil-teacher ratio by town\\
+\hline
+black & 1000(Bk - 0.63)\textasciicircum{}2 where Bk is the proportion of blacks by town\\
+\hline
+lstat & lower status of the population (percent)\\
+\hline
+medv & median value of owner-occupied homes in \$1000s\\
+\hline
+\end{tabular}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(Boston)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      crim zn indus chas   nox    rm  age    dis rad tax ptratio  black
+## 1 0.00632 18  2.31    0 0.538 6.575 65.2 4.0900   1 296    15.3 396.90
+## 2 0.02731  0  7.07    0 0.469 6.421 78.9 4.9671   2 242    17.8 396.90
+## 3 0.02729  0  7.07    0 0.469 7.185 61.1 4.9671   2 242    17.8 392.83
+## 4 0.03237  0  2.18    0 0.458 6.998 45.8 6.0622   3 222    18.7 394.63
+## 5 0.06905  0  2.18    0 0.458 7.147 54.2 6.0622   3 222    18.7 396.90
+## 6 0.02985  0  2.18    0 0.458 6.430 58.7 6.0622   3 222    18.7 394.12
+##   lstat medv
+## 1  4.98 24.0
+## 2  9.14 21.6
+## 3  4.03 34.7
+## 4  2.94 33.4
+## 5  5.33 36.2
+## 6  5.21 28.7
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{M <-}\StringTok{ }\KeywordTok{cor}\NormalTok{(Boston)}
+\KeywordTok{corrplot.mixed}\NormalTok{(M, }\DataTypeTok{lower=}\StringTok{"number"}\NormalTok{, }\DataTypeTok{upper=}\StringTok{"ellipse"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+First, a training data is created and I fit a regression tree to the training data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{train =}\StringTok{ }\KeywordTok{sample}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\KeywordTok{nrow}\NormalTok{(Boston), }\KeywordTok{nrow}\NormalTok{(Boston)}\OperatorTok{/}\DecValTok{2}\NormalTok{)}
+\NormalTok{tree.boston =}\StringTok{ }\KeywordTok{tree}\NormalTok{(medv}\OperatorTok{~}\NormalTok{.,Boston, }\DataTypeTok{subset =}\NormalTok{ train)}
+\KeywordTok{summary}\NormalTok{(tree.boston)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Regression tree:
+## tree(formula = medv ~ ., data = Boston, subset = train)
+## Variables actually used in tree construction:
+## [1] "rm"    "lstat" "crim"  "age"  
+## Number of terminal nodes:  7 
+## Residual mean deviance:  10.38 = 2555 / 246 
+## Distribution of residuals:
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+## -10.1800  -1.7770  -0.1775   0.0000   1.9230  16.5800
+\end{verbatim}
+
+The output of \texttt{summary()} indicates four variables actually used in the tree construction. The number of terminal nodes is 7. deviance is RSS of the tree, which is summation of RSS in 7 terminal nodes. The Residual mean deviance = 10.38 = 2555/246, where 246 = n - \# of nodes = 506/2-7. \texttt{tree.boston\$frame} below describes the node number, \texttt{var} the variable used at the split (or leaf for a terminal node), \texttt{n} the sample size of each node, \texttt{dev} the deviance, \texttt{yval} the fitted value at the node (the mean) and cutpoints for the left and right.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tree.boston}\OperatorTok{$}\NormalTok{frame}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       var   n        dev     yval splits.cutleft splits.cutright
+## 1      rm 253 19447.8743 21.78656        <6.9595         >6.9595
+## 2   lstat 222  6794.2921 19.35360        <14.405         >14.405
+## 4      rm 135  1815.7240 22.50667         <6.543          >6.543
+## 8  <leaf> 111   763.1337 21.37748                               
+## 9  <leaf>  24   256.4696 27.72917                               
+## 5    crim  87  1553.7871 14.46092       <11.4863        >11.4863
+## 10    age  61   613.8026 16.22787         <93.95          >93.95
+## 20 <leaf>  30   245.7147 18.08667                               
+## 21 <leaf>  31   164.1239 14.42903                               
+## 11 <leaf>  26   302.7138 10.31538                               
+## 3      rm  31  1928.9871 39.20968         <7.553          >7.553
+## 6  <leaf>  16   505.4900 33.42500                               
+## 7  <leaf>  15   317.0040 45.38000
+\end{verbatim}
+
+The following result is the value of \texttt{dev} and \texttt{yval} at the node 1 computed by code.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y_train <-}\StringTok{ }\NormalTok{Boston[train,]}\OperatorTok{$}\NormalTok{medv}
+\NormalTok{dev_yal <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\KeywordTok{sum}\NormalTok{((y_train }\OperatorTok{-}\StringTok{ }\KeywordTok{mean}\NormalTok{(y_train))}\OperatorTok{^}\DecValTok{2}\NormalTok{), }\KeywordTok{mean}\NormalTok{(y_train))}
+\KeywordTok{paste}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{'dev'}\NormalTok{, }\StringTok{'yval'}\NormalTok{), }\StringTok{'is'}\NormalTok{, }\KeywordTok{round}\NormalTok{(dev_yal,}\DecValTok{4}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "dev is 19447.8743" "yval is 21.7866"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{RSS =}\StringTok{ }\KeywordTok{sum}\NormalTok{(tree.boston}\OperatorTok{$}\NormalTok{frame}\OperatorTok{$}\NormalTok{dev[}\KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{13}\NormalTok{)]) }
+\KeywordTok{paste}\NormalTok{(}\StringTok{'RSS of the tree is: '}\NormalTok{, }\KeywordTok{round}\NormalTok{(RSS,}\DecValTok{0}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "RSS of the tree is:  2555"
+\end{verbatim}
+
+Plot the tree. The variable \texttt{rm} measures average number of rooms per dwelling. The tree plot displays that more rooms correspond to more expensive houses. The tree predicts a median house price of \$45380 for houses of more numbers of room.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(tree.boston)}
+\KeywordTok{text}\NormalTok{(tree.boston, }\DataTypeTok{pretty =} \DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{large.rm <-}\StringTok{ }\NormalTok{Boston[train, ]}\OperatorTok{$}\NormalTok{rm}\OperatorTok{>=}\FloatTok{7.553}
+\NormalTok{y.large.rm <-}\StringTok{ }\KeywordTok{mean}\NormalTok{(y_train[large.rm])}
+\KeywordTok{paste}\NormalTok{(}\StringTok{'predicted value of median house price of larger house is '}\NormalTok{, y.large.rm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "predicted value of median house price of larger house is  45.38"
+\end{verbatim}
+
+If we go back to this example in the \href{http://faculty.marshall.usc.edu/gareth-james/ISL/}{ISLR}, we can discover that with same random seed number, we obtain different results. In \href{http://faculty.marshall.usc.edu/gareth-james/ISL/}{ISLR}, \texttt{lstat} is the first node, indicating the most important factor that influences the house price. This is due to different random samples we got, although we set the same random seed. Maybe random number generator in different computer is different. If we go to see the result of random forests at page 330, \texttt{rm} and \texttt{lstat} actually are 2 most important variable. On the other hand, pairwise correlation plot shows that \texttt{rm} and \texttt{lstat} has strong correlation with median of house price. Hence, with different random sample, we can obtain that either \texttt{rm} or \texttt{lstat} is at the root node.
+
+Next I use \texttt{cv.tree()} function to see whether pruning the tree will improve performance.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cv.boston =}\StringTok{ }\KeywordTok{cv.tree}\NormalTok{(tree.boston)}
+\KeywordTok{plot}\NormalTok{(cv.boston}\OperatorTok{$}\NormalTok{size, cv.boston}\OperatorTok{$}\NormalTok{dev, }\DataTypeTok{type =} \StringTok{'b'}\NormalTok{, }\DataTypeTok{xlab =} \StringTok{'Size of tree'}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{'Deviance'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cv.boston}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $size
+## [1] 7 6 5 4 3 2 1
+## 
+## $dev
+## [1]  4380.849  4544.815  5601.055  6171.917  6919.608 10419.472 19630.870
+## 
+## $k
+## [1]       -Inf   203.9641   637.2707   796.1207  1106.4931  3424.7810
+## [7] 10724.5951
+## 
+## $method
+## [1] "deviance"
+## 
+## attr(,"class")
+## [1] "prune"         "tree.sequence"
+\end{verbatim}
+
+\texttt{\$size} is the number of terminal nodes and \texttt{\$k} is \(\alpha\).
+
+\hypertarget{classification-trees}{%
+\chapter{Classification Trees}\label{classification-trees}}
 
 \bibliography{book.bib,packages.bib}
 

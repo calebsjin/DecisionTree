@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 1 The Basic of Decision Tree | Decision Tree</title>
+  <title>Chapter 1 Regression Trees | Decision Tree</title>
   <meta name="description" content="This is the Decision Tree methods, including both regression tree and classification tree." />
   <meta name="generator" content="bookdown 0.13.2 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 1 The Basic of Decision Tree | Decision Tree" />
+  <meta property="og:title" content="Chapter 1 Regression Trees | Decision Tree" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 1 The Basic of Decision Tree | Decision Tree" />
+  <meta name="twitter:title" content="Chapter 1 Regression Trees | Decision Tree" />
   
   <meta name="twitter:description" content="This is the Decision Tree methods, including both regression tree and classification tree." />
   
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="index.html"/>
-<link rel="next" href="references.html"/>
+<link rel="next" href="classification-trees.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,6 +51,68 @@
 
 
 
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -69,7 +131,11 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Foreword</a></li>
-<li class="chapter" data-level="1" data-path="basic.html"><a href="basic.html"><i class="fa fa-check"></i><b>1</b> The Basic of Decision Tree</a></li>
+<li class="chapter" data-level="1" data-path="basic.html"><a href="basic.html"><i class="fa fa-check"></i><b>1</b> Regression Trees</a><ul>
+<li class="chapter" data-level="1.1" data-path="basic.html"><a href="basic.html#tree-pruning"><i class="fa fa-check"></i><b>1.1</b> Tree Pruning</a></li>
+<li class="chapter" data-level="1.2" data-path="basic.html"><a href="basic.html#fitting-regression-trees"><i class="fa fa-check"></i><b>1.2</b> Fitting Regression Trees</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="classification-trees.html"><a href="classification-trees.html"><i class="fa fa-check"></i><b>2</b> Classification Trees</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://www.sjin.name" target="blank">Caleb Jin|金时强</a></li>
@@ -92,25 +158,213 @@
 
             <section class="normal" id="section-">
 <div id="basic" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> The Basic of Decision Tree</h1>
-<p>Let’s start with a simple model setting. Consider we have a continuous response variable <span class="math inline">\({\bf y}=(y_1,y_2, \ldots, y_n)\)</span> and 2 predictors <span class="math inline">\({\bf X}= ({\bf x}_1,{\bf x}_2)\in \mathbb{R}^{n\times 2}\)</span>.</p>
-<p>The decision tree starts with splitting a predictor, say <span class="math inline">\({\bf x}_1\)</span>,</p>
+<h1><span class="header-section-number">Chapter 1</span> Regression Trees</h1>
+<p>Let’s start with a simple model setting. Consider we have a continuous response variable <span class="math inline">\({\bf y}=(y_1,y_2, \ldots, y_n)\)</span> and one predictor <span class="math inline">\({\bf x}= (x_1, x_2, \ldots, x_n)^{{\top}}\)</span>.</p>
+<p>The decision tree starts with splitting the predictor <span class="math inline">\({\bf x}\)</span>,</p>
 <ul>
 <li><ol style="list-style-type: decimal">
-<li>We partition <span class="math inline">\({\bf x}_1\)</span> into two distinct regions <span class="math inline">\(R_1(1,s) = \{{\bf x}_1|{\bf x}_1&lt;s\}\)</span> and <span class="math inline">\(R_2(1,s) = \{{\bf x}_1|{\bf x}_1\geq s\}\)</span>.</li>
+<li>We partition <span class="math inline">\({\bf x}\)</span> into two distinct regions <span class="math inline">\(R_1(s) = \{{\bf x}|{\bf x}&lt;s\}\)</span> and <span class="math inline">\(R_2(s) = \{{\bf x}|{\bf x}\geq s\}\)</span>.</li>
 </ol></li>
 <li><ol start="2" style="list-style-type: decimal">
-<li>As all observations are divided into two regions <span class="math inline">\(R_1(1,s)\)</span> or <span class="math inline">\(R_2(1,s)\)</span>, then we make the same prediction with <span class="math display">\[
-\hat y_{R_1}=\frac{1}{n_1}\sum_{i:x_{i1}\in R_1} y_i,\]</span>
-<span class="math display">\[\hat y_{R_2}=\frac{1}{n_2}\sum_{i: x_{i1}\in R_2} y_i.\]</span></li>
+<li>Since all observations are divided into two regions <span class="math inline">\(R_1(s)\)</span> or <span class="math inline">\(R_2(s)\)</span>, we make the same prediction for each region with <span class="math display">\[
+\hat y_{R_1}=\frac{1}{n_1}\sum_{i:x_i\in R_1} y_i,\]</span>
+<span class="math display">\[\hat y_{R_2}=\frac{1}{n_2}\sum_{i: x_i\in R_2} y_i,\]</span>
+where <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span> are number of observations in <span class="math inline">\(R_1\)</span> and <span class="math inline">\(R_2\)</span>, respectively.</li>
 </ol></li>
 </ul>
-<p><strong>The question is how to determine <span class="math inline">\(s\)</span></strong>.</p>
-<p>From the step 1), we get <span class="math inline">\(R_1(1,s)\)</span> and <span class="math inline">\(R_2(1,s)\)</span> by spliting <span class="math inline">\({\bf x}_1\)</span>, for example. We hope this splitting can maximize sum of squares between regions and minimize sum of squares within regions of <span class="math inline">\({\bf y}\)</span>. As total sum of squares of <span class="math inline">\({\bf y}\)</span> is fixed, maximium of sum of squares between regions is equivalent to minimum of sum of squares within regions. This lead us to consider a classic criterion, residual sum of squares (RSS):
+<p><strong>The question is how to determine the value of cutpoint <span class="math inline">\(s\)</span> to partition <span class="math inline">\({\bf x}\)</span> into <span class="math inline">\(R_1\)</span> and <span class="math inline">\(R_2\)</span></strong>.</p>
+<p>From the step 1), We hope this splitting can minimize sum of squares within regions of <span class="math inline">\({\bf y}\)</span>. This leads us to consider a classic criterion, residual sum of squares (RSS):
 <span class="math display">\[
-RSS = \sum_{j=1}^{2}\sum_{i:x_{i1}\in R_j(1,s)}(y_i - \hat y_{R_j})^2.
+RSS = \sum_{j=1}^{2}\sum_{i:x_i\in R_j(s)}(y_i - \hat y_{R_j})^2.
 \]</span></p>
-
+<p>Therefore, in the general model setting (consider <span class="math inline">\(p\)</span> many predictors <span class="math inline">\({\bf x}_j\)</span> for <span class="math inline">\(j=1,2,\ldots,p\)</span>), the question is then transferred to:</p>
+<ul>
+<li><p>For each predictor <span class="math inline">\({\bf x}_j\)</span>, find the best <span class="math inline">\(s\)</span> value that can minimize RSS.</p></li>
+<li><p>Among <span class="math inline">\(p\)</span> many different RSS, choose the predictor and cutpoint <span class="math inline">\(s\)</span> that resulting splitting has smallest RSS.</p></li>
+</ul>
+<p>To better understand the details above, we define the pair of half-planes as
+<span class="math display">\[
+R_1(j,s) = \{x|{\bf x}_j&lt;s\}\quad \text{and} \quad R_2(j,s) = \{x|{\bf x}_j\geq s\}, 
+\]</span>
+for any <span class="math inline">\(j\)</span> and <span class="math inline">\(s\)</span>. And we search <span class="math inline">\(x_j\)</span> and <span class="math inline">\(s\)</span> that minimize the equation
+<span class="math display">\[
+\sum_{i:x_{ij}\in R_1(j,s)}(y_i - \hat y_{R_1})^2 + \sum_{i:x_{ij}\in R_2(j,s)}(y_i - \hat y_{R_2})^2.
+\]</span>
+After this process, we split the space of a specific predictor and data into two regions or branches. Within each branch identified previously, repeat this process, seeking the pair <span class="math inline">\((j,s)\)</span> to minimize RSS. However, we only choose one branch to split into two sub-branches that has minimum RSS compared with RSS of another branch splitting and RSS of mother splitting. Hence, at this stage, we may have three branches or two branches, because possibly no smaller RSS can be found and no further splitting occurs. This process continues until a stopping criterion is reached and obtain <span class="math inline">\(R_1, R_2, \ldots, R_J\)</span>.</p>
+<div id="tree-pruning" class="section level2">
+<h2><span class="header-section-number">1.1</span> Tree Pruning</h2>
+</div>
+<div id="fitting-regression-trees" class="section level2">
+<h2><span class="header-section-number">1.2</span> Fitting Regression Trees</h2>
+<p>I use R code from the book ISLR <span class="citation">(James et al. <a href="#ref-James2014">2014</a>)</span> to illustrate the regression trees. <code>Boston</code> data set is used in the R package <code>MASS</code>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># Load packages</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">library</span>(tree)</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="kw">library</span>(ISLR)</a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="kw">library</span>(MASS)</a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="kw">library</span>(knitr)</a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="kw">library</span>(corrplot)</a></code></pre></div>
+<pre><code>## corrplot 0.84 loaded</code></pre>
+<p>The Boston data frame has 506 rows and 14 columns. This data frame contains the following variables:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Var</th>
+<th align="left">Desp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">crim</td>
+<td align="left">per capita crime rate by town</td>
+</tr>
+<tr class="even">
+<td align="left">zn</td>
+<td align="left">proportion of residential land zoned for lots over 25,000 sq.ft</td>
+</tr>
+<tr class="odd">
+<td align="left">indus</td>
+<td align="left">proportion of non-retail business acres per town</td>
+</tr>
+<tr class="even">
+<td align="left">chas</td>
+<td align="left">Charles River dummy variable (= 1 if tract bounds river; 0 otherwise)</td>
+</tr>
+<tr class="odd">
+<td align="left">nox</td>
+<td align="left">nitrogen oxides concentration (parts per 10 million)</td>
+</tr>
+<tr class="even">
+<td align="left">rm</td>
+<td align="left">average number of rooms per dwelling</td>
+</tr>
+<tr class="odd">
+<td align="left">age</td>
+<td align="left">proportion of owner-occupied units built prior to 1940</td>
+</tr>
+<tr class="even">
+<td align="left">dis</td>
+<td align="left">weighted mean of distances to five Boston employment centres</td>
+</tr>
+<tr class="odd">
+<td align="left">rad</td>
+<td align="left">index of accessibility to radial highways</td>
+</tr>
+<tr class="even">
+<td align="left">tax</td>
+<td align="left">full-value property-tax rate per $10,000</td>
+</tr>
+<tr class="odd">
+<td align="left">ptratio</td>
+<td align="left">pupil-teacher ratio by town</td>
+</tr>
+<tr class="even">
+<td align="left">black</td>
+<td align="left">1000(Bk - 0.63)^2 where Bk is the proportion of blacks by town</td>
+</tr>
+<tr class="odd">
+<td align="left">lstat</td>
+<td align="left">lower status of the population (percent)</td>
+</tr>
+<tr class="even">
+<td align="left">medv</td>
+<td align="left">median value of owner-occupied homes in $1000s</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">head</span>(Boston)</a></code></pre></div>
+<pre><code>##      crim zn indus chas   nox    rm  age    dis rad tax ptratio  black
+## 1 0.00632 18  2.31    0 0.538 6.575 65.2 4.0900   1 296    15.3 396.90
+## 2 0.02731  0  7.07    0 0.469 6.421 78.9 4.9671   2 242    17.8 396.90
+## 3 0.02729  0  7.07    0 0.469 7.185 61.1 4.9671   2 242    17.8 392.83
+## 4 0.03237  0  2.18    0 0.458 6.998 45.8 6.0622   3 222    18.7 394.63
+## 5 0.06905  0  2.18    0 0.458 7.147 54.2 6.0622   3 222    18.7 396.90
+## 6 0.02985  0  2.18    0 0.458 6.430 58.7 6.0622   3 222    18.7 394.12
+##   lstat medv
+## 1  4.98 24.0
+## 2  9.14 21.6
+## 3  4.03 34.7
+## 4  2.94 33.4
+## 5  5.33 36.2
+## 6  5.21 28.7</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">M &lt;-<span class="st"> </span><span class="kw">cor</span>(Boston)</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="kw">corrplot.mixed</span>(M, <span class="dt">lower=</span><span class="st">&quot;number&quot;</span>, <span class="dt">upper=</span><span class="st">&quot;ellipse&quot;</span>)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>First, a training data is created and I fit a regression tree to the training data.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">set.seed</span>(<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb6-2" title="2">train =<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(Boston), <span class="kw">nrow</span>(Boston)<span class="op">/</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb6-3" title="3">tree.boston =<span class="st"> </span><span class="kw">tree</span>(medv<span class="op">~</span>.,Boston, <span class="dt">subset =</span> train)</a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="kw">summary</span>(tree.boston)</a></code></pre></div>
+<pre><code>## 
+## Regression tree:
+## tree(formula = medv ~ ., data = Boston, subset = train)
+## Variables actually used in tree construction:
+## [1] &quot;rm&quot;    &quot;lstat&quot; &quot;crim&quot;  &quot;age&quot;  
+## Number of terminal nodes:  7 
+## Residual mean deviance:  10.38 = 2555 / 246 
+## Distribution of residuals:
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+## -10.1800  -1.7770  -0.1775   0.0000   1.9230  16.5800</code></pre>
+<p>The output of <code>summary()</code> indicates four variables actually used in the tree construction. The number of terminal nodes is 7. deviance is RSS of the tree, which is summation of RSS in 7 terminal nodes. The Residual mean deviance = 10.38 = 2555/246, where 246 = n - # of nodes = 506/2-7. <code>tree.boston$frame</code> below describes the node number, <code>var</code> the variable used at the split (or leaf for a terminal node), <code>n</code> the sample size of each node, <code>dev</code> the deviance, <code>yval</code> the fitted value at the node (the mean) and cutpoints for the left and right.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">tree.boston<span class="op">$</span>frame</a></code></pre></div>
+<pre><code>##       var   n        dev     yval splits.cutleft splits.cutright
+## 1      rm 253 19447.8743 21.78656        &lt;6.9595         &gt;6.9595
+## 2   lstat 222  6794.2921 19.35360        &lt;14.405         &gt;14.405
+## 4      rm 135  1815.7240 22.50667         &lt;6.543          &gt;6.543
+## 8  &lt;leaf&gt; 111   763.1337 21.37748                               
+## 9  &lt;leaf&gt;  24   256.4696 27.72917                               
+## 5    crim  87  1553.7871 14.46092       &lt;11.4863        &gt;11.4863
+## 10    age  61   613.8026 16.22787         &lt;93.95          &gt;93.95
+## 20 &lt;leaf&gt;  30   245.7147 18.08667                               
+## 21 &lt;leaf&gt;  31   164.1239 14.42903                               
+## 11 &lt;leaf&gt;  26   302.7138 10.31538                               
+## 3      rm  31  1928.9871 39.20968         &lt;7.553          &gt;7.553
+## 6  &lt;leaf&gt;  16   505.4900 33.42500                               
+## 7  &lt;leaf&gt;  15   317.0040 45.38000</code></pre>
+<p>The following result is the value of <code>dev</code> and <code>yval</code> at the node 1 computed by code.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">y_train &lt;-<span class="st"> </span>Boston[train,]<span class="op">$</span>medv</a>
+<a class="sourceLine" id="cb10-2" title="2">dev_yal &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">sum</span>((y_train <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(y_train))<span class="op">^</span><span class="dv">2</span>), <span class="kw">mean</span>(y_train))</a>
+<a class="sourceLine" id="cb10-3" title="3"><span class="kw">paste</span>(<span class="kw">c</span>(<span class="st">&#39;dev&#39;</span>, <span class="st">&#39;yval&#39;</span>), <span class="st">&#39;is&#39;</span>, <span class="kw">round</span>(dev_yal,<span class="dv">4</span>))</a></code></pre></div>
+<pre><code>## [1] &quot;dev is 19447.8743&quot; &quot;yval is 21.7866&quot;</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1">RSS =<span class="st"> </span><span class="kw">sum</span>(tree.boston<span class="op">$</span>frame<span class="op">$</span>dev[<span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">13</span>)]) </a>
+<a class="sourceLine" id="cb12-2" title="2"><span class="kw">paste</span>(<span class="st">&#39;RSS of the tree is: &#39;</span>, <span class="kw">round</span>(RSS,<span class="dv">0</span>))</a></code></pre></div>
+<pre><code>## [1] &quot;RSS of the tree is:  2555&quot;</code></pre>
+<p>Plot the tree. The variable <code>rm</code> measures average number of rooms per dwelling. The tree plot displays that more rooms correspond to more expensive houses. The tree predicts a median house price of $45380 for houses of more numbers of room.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">plot</span>(tree.boston)</a>
+<a class="sourceLine" id="cb14-2" title="2"><span class="kw">text</span>(tree.boston, <span class="dt">pretty =</span> <span class="dv">0</span>)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1">large.rm &lt;-<span class="st"> </span>Boston[train, ]<span class="op">$</span>rm<span class="op">&gt;=</span><span class="fl">7.553</span></a>
+<a class="sourceLine" id="cb15-2" title="2">y.large.rm &lt;-<span class="st"> </span><span class="kw">mean</span>(y_train[large.rm])</a>
+<a class="sourceLine" id="cb15-3" title="3"><span class="kw">paste</span>(<span class="st">&#39;predicted value of median house price of larger house is &#39;</span>, y.large.rm)</a></code></pre></div>
+<pre><code>## [1] &quot;predicted value of median house price of larger house is  45.38&quot;</code></pre>
+<p>If we go back to this example in the <a href="http://faculty.marshall.usc.edu/gareth-james/ISL/">ISLR</a>, we can discover that with same random seed number, we obtain different results. In <a href="http://faculty.marshall.usc.edu/gareth-james/ISL/">ISLR</a>, <code>lstat</code> is the first node, indicating the most important factor that influences the house price. This is due to different random samples we got, although we set the same random seed. Maybe random number generator in different computer is different. If we go to see the result of random forests at page 330, <code>rm</code> and <code>lstat</code> actually are 2 most important variable. On the other hand, pairwise correlation plot shows that <code>rm</code> and <code>lstat</code> has strong correlation with median of house price. Hence, with different random sample, we can obtain that either <code>rm</code> or <code>lstat</code> is at the root node.</p>
+<p>Next I use <code>cv.tree()</code> function to see whether pruning the tree will improve performance.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1">cv.boston =<span class="st"> </span><span class="kw">cv.tree</span>(tree.boston)</a>
+<a class="sourceLine" id="cb17-2" title="2"><span class="kw">plot</span>(cv.boston<span class="op">$</span>size, cv.boston<span class="op">$</span>dev, <span class="dt">type =</span> <span class="st">&#39;b&#39;</span>, <span class="dt">xlab =</span> <span class="st">&#39;Size of tree&#39;</span>, <span class="dt">ylab =</span> <span class="st">&#39;Deviance&#39;</span>)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">cv.boston</a></code></pre></div>
+<pre><code>## $size
+## [1] 7 6 5 4 3 2 1
+## 
+## $dev
+## [1]  4380.849  4544.815  5601.055  6171.917  6919.608 10419.472 19630.870
+## 
+## $k
+## [1]       -Inf   203.9641   637.2707   796.1207  1106.4931  3424.7810
+## [7] 10724.5951
+## 
+## $method
+## [1] &quot;deviance&quot;
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;prune&quot;         &quot;tree.sequence&quot;</code></pre>
+<p><code>$size</code> is the number of terminal nodes and <code>$k</code> is <span class="math inline">\(\alpha\)</span>.</p>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-James2014">
+<p>James, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. 2014. <em>An Introduction to Statistical Learning: With Applications in R</em>. Springer Publishing Company, Incorporated.</p>
+</div>
 </div>
             </section>
 
@@ -118,7 +372,7 @@ RSS = \sum_{j=1}^{2}\sum_{i:x_{i1}\in R_j(1,s)}(y_i - \hat y_{R_j})^2.
         </div>
       </div>
 <a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="classification-trees.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -150,7 +404,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/01-intro.Rmd",
+"link": "https://github.com/calebsjin/DecisionTree/edit/master/01-intro.Rmd",
 "text": "Edit"
 },
 "history": {
