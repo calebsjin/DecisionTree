@@ -1,0 +1,31 @@
+---
+header-includes:
+- \usepackage{amssymb}
+- \usepackage{color}
+output:
+  pdf_document: default
+  html_document: default
+---
+\newcommand\uy{{\bf y}}
+\newcommand\uX{{\bf X}}
+\newcommand\ux{{\bf x}}
+
+# The Basic of Decision Tree {#basic}
+Let's start with a simple model setting. Consider we have a continuous response variable $\uy=(y_1,y_2, \ldots, y_n)$ and 2 predictors $\uX = (\ux_1,\ux_2)\in \mathbb{R}^{n\times 2}$.
+
+The decision tree starts with splitting a predictor, say $\ux_1$,
+
+- 1) We partition $\ux_1$ into two distinct regions $R_1(1,s) = \{\ux_1|\ux_1<s\}$ and $R_2(1,s) = \{\ux_1|\ux_1\geq s\}$.
+
+- 2) As all observations are divided into two regions $R_1(1,s)$ or $R_2(1,s)$, then we make the same prediction with \[
+\hat y_{R_1}=\frac{1}{n_1}\sum_{i:x_{i1}\in R_1} y_i,\]
+\[\hat y_{R_2}=\frac{1}{n_2}\sum_{i: x_{i1}\in R_2} y_i.\]
+
+**The question is how to determine $s$**.
+
+From the step 1), we get $R_1(1,s)$ and $R_2(1,s)$ by spliting $\ux_1$, for example. We hope this splitting can maximize sum of squares between regions and minimize sum of squares within regions of $\uy$. As total sum of squares of $\uy$ is fixed, maximium of sum of squares between regions is equivalent to minimum of sum of squares within regions. This lead us to consider a classic criterion,  residual sum of squares (RSS):
+\[
+RSS = \sum_{j=1}^{2}\sum_{i:x_{i1}\in R_j(1,s)}(y_i - \hat y_{R_j})^2.
+\]
+
+

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 1 The Basic of Decision Tree | Decision Tree</title>
+  <meta name="description" content="This is the Decision Tree methods, including both regression tree and classification tree." />
+  <meta name="generator" content="bookdown 0.13.2 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 1 The Basic of Decision Tree | Decision Tree" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is the Decision Tree methods, including both regression tree and classification tree." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 1 The Basic of Decision Tree | Decision Tree" />
+  
+  <meta name="twitter:description" content="This is the Decision Tree methods, including both regression tree and classification tree." />
+  
+
+<meta name="author" content="Caleb Jin" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Decision Tree</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Foreword</a></li>
+<li class="chapter" data-level="1" data-path="basic.html"><a href="basic.html"><i class="fa fa-check"></i><b>1</b> The Basic of Decision Tree</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://www.sjin.name" target="blank">Caleb Jin|金时强</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Decision Tree</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="basic" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> The Basic of Decision Tree</h1>
+<p>Let’s start with a simple model setting. Consider we have a continuous response variable <span class="math inline">\({\bf y}=(y_1,y_2, \ldots, y_n)\)</span> and 2 predictors <span class="math inline">\({\bf X}= ({\bf x}_1,{\bf x}_2)\in \mathbb{R}^{n\times 2}\)</span>.</p>
+<p>The decision tree starts with splitting a predictor, say <span class="math inline">\({\bf x}_1\)</span>,</p>
+<ul>
+<li><ol style="list-style-type: decimal">
+<li>We partition <span class="math inline">\({\bf x}_1\)</span> into two distinct regions <span class="math inline">\(R_1(1,s) = \{{\bf x}_1|{\bf x}_1&lt;s\}\)</span> and <span class="math inline">\(R_2(1,s) = \{{\bf x}_1|{\bf x}_1\geq s\}\)</span>.</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: decimal">
+<li>As all observations are divided into two regions <span class="math inline">\(R_1(1,s)\)</span> or <span class="math inline">\(R_2(1,s)\)</span>, then we make the same prediction with <span class="math display">\[
+\hat y_{R_1}=\frac{1}{n_1}\sum_{i:x_{i1}\in R_1} y_i,\]</span>
+<span class="math display">\[\hat y_{R_2}=\frac{1}{n_2}\sum_{i: x_{i1}\in R_2} y_i.\]</span></li>
+</ol></li>
+</ul>
+<p><strong>The question is how to determine <span class="math inline">\(s\)</span></strong>.</p>
+<p>From the step 1), we get <span class="math inline">\(R_1(1,s)\)</span> and <span class="math inline">\(R_2(1,s)\)</span> by spliting <span class="math inline">\({\bf x}_1\)</span>, for example. We hope this splitting can maximize sum of squares between regions and minimize sum of squares within regions of <span class="math inline">\({\bf y}\)</span>. As total sum of squares of <span class="math inline">\({\bf y}\)</span> is fixed, maximium of sum of squares between regions is equivalent to minimum of sum of squares within regions. This lead us to consider a classic criterion, residual sum of squares (RSS):
+<span class="math display">\[
+RSS = \sum_{j=1}^{2}\sum_{i:x_{i1}\in R_j(1,s)}(y_i - \hat y_{R_j})^2.
+\]</span></p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/01-intro.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

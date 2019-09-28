@@ -1,0 +1,24 @@
+
+\documentclass{article}
+\usepackage{amssymb}
+\usepackage{algorithm}
+\newcommand\ux{{\bf x}}
+\newcommand\uX{{\bf X}}
+\newcommand\uy{{\bf y}}
+
+\title{\LARGE\bf Decision Tree}
+\author{Shiqiang Jin}
+\begin{document}
+\maketitle
+
+Consider a continuous response variable $\uy=(y_1,y_2, \ldots, y_n)$ and $p$ many predictors $\uX = (\ux_1,\ux_2,\ldots,\ux_p)\in \mathbb{R}^{n\times p}$.
+
+\begin{algorithm}
+  \caption{Rough algorithm of decision tree}
+\begin{itemize}
+  \item [1. ] For each predictor $\ux_j$, we partition it into two distinct regions $R_1(j,s) = \{\ux_j|\ux_j<s\} $ and $R_2(j,s) = \{\ux_j|\ux_j\geq s\}$.
+  \item [2. ] For each predictor $\ux_j$, observations are divided into two regions $R_1$ or $R_2$, then we make the same prediction with $\hat\uy_{R_1}=\frac{1}{n_1}\sum_{i\in R_1(j,s)} y_i$ or $\hat\uy_{R_2(j,s)}=\frac{1}{n_2}\sum_{i\in R_2} y_i$.
+\end{itemize}
+\end{algorithm}
+
+\end{document}

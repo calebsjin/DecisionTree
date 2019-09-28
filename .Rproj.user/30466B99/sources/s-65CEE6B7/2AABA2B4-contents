@@ -1,0 +1,43 @@
+---
+title: "Decision Tree"
+author: "Caleb Jin"
+date: "9-27-2019"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "This is the Decision Tree methods, including both regression tree and classification tree."
+---
+
+
+# Foreword {-#Foreword}
+
+I am [Caleb Jin](https://www.sjin.name/). This is my note of **decision tree**. When I try to grasp a statistical method, I'd like to wirte down every details about it that I am able to. I mainly use **An Introduction to Statistical Learning with Applications in R** [@James2014] and **The Elements of Statistical Learning** [@hastie2008]. Due to my limited statistics knowledge, if making any mistakes, I sincerely expect you guys can email to me. My email address is jinsq@ksu.edu. Appreicate!
+
+<!--chapter:end:index.Rmd-->
+
+\usepackage{amssymb}
+\usepackage{algorithm}
+\newcommand\uy{{\bf y}}
+\newcommand\uX{{\bf X}}
+\newcommand\ux{{\bf x}}
+
+# The Basic of Decision Tree {#basic}
+
+Consider a continuous response variable $\uy=(y_1,y_2, \ldots, y_n)$ and $p$ many predictors $\uX = (\ux_1,\ux_2,\ldots,\ux_p)\in \mathbb{R}^{n\times p}$.
+
+
+
+
+
+
+<!--chapter:end:01-intro.Rmd-->
+
+`r if (knitr:::is_html_output()) '
+# References {-}
+'`
+
+<!--chapter:end:02-references.Rmd-->
+

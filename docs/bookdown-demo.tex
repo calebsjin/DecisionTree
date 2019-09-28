@@ -1,0 +1,152 @@
+\documentclass[]{book}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Decision Tree},
+            pdfauthor={Caleb Jin},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{natbib}
+\bibliographystyle{apalike}
+\usepackage{longtable,booktabs}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{Decision Tree}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{Caleb Jin}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{9-27-2019}
+
+\usepackage{booktabs}
+\usepackage{amsthm}
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=8pt plus 2pt minus 4pt
+  \thm@postskip=\thm@preskip
+}
+\makeatother
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{Foreword}{%
+\chapter*{Foreword}\label{Foreword}}
+\addcontentsline{toc}{chapter}{Foreword}
+
+I am \href{https://www.sjin.name/}{Caleb Jin}. This is my note of \textbf{decision tree}. When I try to grasp a statistical method, I'd like to wirte down every details about it that I am able to. I mainly use \textbf{An Introduction to Statistical Learning with Applications in R} \citep{James2014} and \textbf{The Elements of Statistical Learning} \citep{hastie2008}. Due to my limited statistics knowledge, if making any mistakes, I sincerely expect you guys can email to me. My email address is \href{mailto:jinsq@ksu.edu}{\nolinkurl{jinsq@ksu.edu}}. Appreicate!
+
+\newcommand\uy{{\bf y}}
+\newcommand\uX{{\bf X}}
+\newcommand\ux{{\bf x}}
+
+\hypertarget{basic}{%
+\chapter{The Basic of Decision Tree}\label{basic}}
+
+Let's start with a simple model setting. Consider we have a continuous response variable \({\bf y}=(y_1,y_2, \ldots, y_n)\) and 2 predictors \({\bf X}= ({\bf x}_1,{\bf x}_2)\in \mathbb{R}^{n\times 2}\).
+
+The decision tree starts with splitting a predictor, say \({\bf x}_1\),
+
+\begin{itemize}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi})}
+  \tightlist
+  \item
+    We partition \({\bf x}_1\) into two distinct regions \(R_1(1,s) = \{{\bf x}_1|{\bf x}_1<s\}\) and \(R_2(1,s) = \{{\bf x}_1|{\bf x}_1\geq s\}\).
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi})}
+  \setcounter{enumi}{1}
+  \tightlist
+  \item
+    As all observations are divided into two regions \(R_1(1,s)\) or \(R_2(1,s)\), then we make the same prediction with \[
+    \hat y_{R_1}=\frac{1}{n_1}\sum_{i:x_{i1}\in R_1} y_i,\]
+    \[\hat y_{R_2}=\frac{1}{n_2}\sum_{i: x_{i1}\in R_2} y_i.\]
+  \end{enumerate}
+\end{itemize}
+
+\textbf{The question is how to determine \(s\)}.
+
+From the step 1), we get \(R_1(1,s)\) and \(R_2(1,s)\) by spliting \({\bf x}_1\), for example. We hope this splitting can maximize sum of squares between regions and minimize sum of squares within regions of \({\bf y}\). As total sum of squares of \({\bf y}\) is fixed, maximium of sum of squares between regions is equivalent to minimum of sum of squares within regions. This lead us to consider a classic criterion, residual sum of squares (RSS):
+\[
+RSS = \sum_{j=1}^{2}\sum_{i:x_{i1}\in R_j(1,s)}(y_i - \hat y_{R_j})^2.
+\]
+
+\bibliography{book.bib,packages.bib}
+
+
+\end{document}
